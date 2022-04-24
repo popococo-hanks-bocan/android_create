@@ -9,6 +9,10 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
       - name: Setup Go environment
       - uses: actions/setup-go@v3
         with:
