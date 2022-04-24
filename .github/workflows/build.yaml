@@ -9,10 +9,12 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name: Set up Go 1.18
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.18
+      - name: Setup Go environment
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+          with:
+            go-version: '>=1.17.0'
+      - run: go version
       - id: get-project
         name: Get project name
         run: echo "::set-output name=PROJECT::$(cat project-to-build)"
