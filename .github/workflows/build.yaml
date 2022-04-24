@@ -7,15 +7,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+        
       - name: Setup Go environment
       - uses: actions/setup-go@v3
         with:
             go-version: '>=1.17.0'
-        id: go
+      - run: go version
+      
       - name: Check out source code
         uses: actions/checkout@v1
+      
       - name: Build
         run: go build .
+    
+      - name: Test
+        run: go test -v .
     
       - id: get-project
         name: Get project name
